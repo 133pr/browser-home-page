@@ -34,6 +34,7 @@ const AddFavorite = () => {
     }).then(res => {
       console.log(res);
     });
+    setEdit(false)
     router.refresh()
   };
 
