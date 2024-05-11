@@ -14,8 +14,8 @@ const SearchComponent = () => {
         <form onSubmit={onSubmit} className="bg-slate-900 py-10 px-5 rounded-3xl shadow-lg">
             <label htmlFor="google_search" className="relative">
                 <div className="flex rounded-full py-3 px-5 bg-slate-800 gap-2">
-                    <input className={`flex-1 bg-slate-500 pr-10 rounded-full placeholder:text-white text-white`} name="google_search" id="google_search" placeholder="جستجو در گوگل"/>
-                    <button className="text-white px-4 py-2 hover:bg-slate-900 rounded-full hover:shadow-md hover:shadow-cyan-500/50">جستجو</button>
+                    <input className={`flex-1  pr-10`} name="google_search" id="google_search" placeholder="جستجو در گوگل"/>
+                    <button className="px-4 py-2 hover:bg-slate-900 rounded-full hover:shadow-md hover:shadow-cyan-500/50">جستجو</button>
                 </div>
                 <div className="flex gap-2 mb-2 absolute right-7 top-1/2 -translate-y-1/2">
                     <Image src={googleIcon} alt={""}/>

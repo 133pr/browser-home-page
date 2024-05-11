@@ -1,26 +1,35 @@
+import AddFavorite from "@/app/components/AddFavorite";
+import FavoriteItem from "@/app/components/FavoriteItem";
+import { cookies } from "next/headers";
 
-const FavoritesComponent = () => {
-    return (
-        <div className="bg-slate-900 py-10 px-5 rounded-3xl shadow-lg mt-5 h-[60%] grid grid-cols-2 lg:grid-cols-6 gap-5">
-            {
-                Array.apply(0, Array(12)).map((item, i) =>{
-                    return (
-                        <div key={i}>
-                            <FavItem/>
-                        </div>
-                    )
-                })
-            }
-        </div>
-    );
+const FavoritesComponent = async () => {
+  const { items, error } = await fetch(`${process.env.NEXTAUTH_URL}/api/favorites`, {
+    headers: {
+      Cookie: cookies()
+    }
+  })
+    .then(async (r) => await r.json());
+  return (
+    <div
+      className="bg-slate-900 py-10 px-5 rounded-3xl shadow-lg min-h-[60%] grid grid-cols-2 lg:grid-cols-4 gap-5 relative col-span-2 order-2 lg:order-1">
+      {
+        items.map((item, i) => {
+          return (
+            <div key={i}>
+              <FavoriteItem item={item} />
+            </div>
+          );
+        })
+      }
+      {
+        Array.apply(0, Array(8 - items.length)).map((item, i) => {
+          return (
+            <AddFavorite key={i}/>
+          )
+        })
+      }
+    </div>
+  );
 };
 
 export default FavoritesComponent;
-
-const FavItem = () => {
-    return (
-        <div className="aspect-square bg-slate-800 rounded-3xl hover:shadow-lg hover:shadow-cyan-500/50">
-
-        </div>
-    );
-};

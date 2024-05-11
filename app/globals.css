@@ -4,9 +4,12 @@
 
 @layer components {
     * {
-        @apply transition-all
+        @apply transition-all text-white
     }
     input {
-        @apply focus:outline-0 focus:shadow-md focus:shadow-cyan-500/50
+        @apply focus:outline-0 focus:shadow-md focus:shadow-cyan-500/50 bg-slate-500 rounded-full placeholder:text-white
+    }
+    label {
+        @apply block
     }
 }
