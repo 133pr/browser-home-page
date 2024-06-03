@@ -1,8 +1,10 @@
 "use client";
 import { getCsrfToken, useSession, signIn } from "next-auth/react";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 const CheckAuth = () => {
+  const router = useRouter();
   const [csrfToken, setCsrfToken] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState();
@@ -20,6 +22,7 @@ const CheckAuth = () => {
       email: email,
       password: password
     });
+    router.refresh()
   };
 
 
@@ -36,18 +39,18 @@ const CheckAuth = () => {
           <div className="flex gap-3 flex-col">
             <label>
               ایمیل
-              <input name="email" type="text" className={`w-full mt-2 py-2`} value={email}
+              <input name="email" type="text" className={`w-full mt-2 py-2 px-2`} value={email} dir={'ltr'}
                      onChange={e => setEmail(e.target.value)} />
             </label>
             <label>
               رمزعبور
-              <input name="password" type="password" className={`w-full mt-2 py-2`} value={password}
+              <input name="password" type="password" className={`w-full mt-2 py-2 px-2`} value={password} dir={'ltr'}
                      onChange={e => setPassword(e.target.value)} />
             </label>
           </div>
           <button type="submit"
-                  className="px-4 py-2 bg-slate-900 rounded-full hover:shadow-md hover:shadow-cyan-500/50">Sign
-            in
+                  className="px-4 py-2 bg-slate-900 rounded-full hover:shadow-md hover:shadow-cyan-500/50">
+            ورود
           </button>
         </form>
       </div>

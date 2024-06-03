@@ -12,4 +12,12 @@
     label {
         @apply block
     }
+
+    .times {
+        @apply flex items-center justify-between w-full gap-x-2
+    }
+
+    .times > div {
+        @apply flex flex-col justify-center w-full text-center bg-slate-800 p-2 rounded-md
+    }
 }

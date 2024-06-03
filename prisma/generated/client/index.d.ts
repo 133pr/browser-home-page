@@ -38,6 +38,16 @@ export type VerificationRequest = $Result.DefaultSelection<Prisma.$VerificationR
  * 
  */
 export type Favorites = $Result.DefaultSelection<Prisma.$FavoritesPayload>
+/**
+ * Model Passed
+ * 
+ */
+export type Passed = $Result.DefaultSelection<Prisma.$PassedPayload>
+/**
+ * Model Settings
+ * 
+ */
+export type Settings = $Result.DefaultSelection<Prisma.$SettingsPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -210,6 +220,26 @@ export class PrismaClient<
     * ```
     */
   get favorites(): Prisma.FavoritesDelegate<ExtArgs>;
+
+  /**
+   * `prisma.passed`: Exposes CRUD operations for the **Passed** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Passeds
+    * const passeds = await prisma.passed.findMany()
+    * ```
+    */
+  get passed(): Prisma.PassedDelegate<ExtArgs>;
+
+  /**
+   * `prisma.settings`: Exposes CRUD operations for the **Settings** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Settings
+    * const settings = await prisma.settings.findMany()
+    * ```
+    */
+  get settings(): Prisma.SettingsDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -268,7 +298,7 @@ export namespace Prisma {
 
   /**
    * Prisma Client JS version: 5.13.0
-   * Query Engine version: b9a39a7ee606c28e3455d0fd60e78c3ba82b1a2b
+   * Query Engine version: e9771e62de70f79a5e1c604a2d7c8e2a0a874b48
    */
   export type PrismaVersion = {
     client: string
@@ -691,7 +721,9 @@ export namespace Prisma {
     Session: 'Session',
     User: 'User',
     VerificationRequest: 'VerificationRequest',
-    Favorites: 'Favorites'
+    Favorites: 'Favorites',
+    Passed: 'Passed',
+    Settings: 'Settings'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -708,7 +740,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'account' | 'session' | 'user' | 'verificationRequest' | 'favorites'
+      modelProps: 'account' | 'session' | 'user' | 'verificationRequest' | 'favorites' | 'passed' | 'settings'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -1039,6 +1071,138 @@ export namespace Prisma {
           count: {
             args: Prisma.FavoritesCountArgs<ExtArgs>,
             result: $Utils.Optional<FavoritesCountAggregateOutputType> | number
+          }
+        }
+      }
+      Passed: {
+        payload: Prisma.$PassedPayload<ExtArgs>
+        fields: Prisma.PassedFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PassedFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PassedPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PassedFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PassedPayload>
+          }
+          findFirst: {
+            args: Prisma.PassedFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PassedPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PassedFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PassedPayload>
+          }
+          findMany: {
+            args: Prisma.PassedFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PassedPayload>[]
+          }
+          create: {
+            args: Prisma.PassedCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PassedPayload>
+          }
+          createMany: {
+            args: Prisma.PassedCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.PassedDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PassedPayload>
+          }
+          update: {
+            args: Prisma.PassedUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PassedPayload>
+          }
+          deleteMany: {
+            args: Prisma.PassedDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PassedUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.PassedUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PassedPayload>
+          }
+          aggregate: {
+            args: Prisma.PassedAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregatePassed>
+          }
+          groupBy: {
+            args: Prisma.PassedGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<PassedGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PassedCountArgs<ExtArgs>,
+            result: $Utils.Optional<PassedCountAggregateOutputType> | number
+          }
+        }
+      }
+      Settings: {
+        payload: Prisma.$SettingsPayload<ExtArgs>
+        fields: Prisma.SettingsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.SettingsFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$SettingsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.SettingsFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$SettingsPayload>
+          }
+          findFirst: {
+            args: Prisma.SettingsFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$SettingsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.SettingsFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$SettingsPayload>
+          }
+          findMany: {
+            args: Prisma.SettingsFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$SettingsPayload>[]
+          }
+          create: {
+            args: Prisma.SettingsCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$SettingsPayload>
+          }
+          createMany: {
+            args: Prisma.SettingsCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.SettingsDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$SettingsPayload>
+          }
+          update: {
+            args: Prisma.SettingsUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$SettingsPayload>
+          }
+          deleteMany: {
+            args: Prisma.SettingsDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.SettingsUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.SettingsUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$SettingsPayload>
+          }
+          aggregate: {
+            args: Prisma.SettingsAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateSettings>
+          }
+          groupBy: {
+            args: Prisma.SettingsGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<SettingsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.SettingsCountArgs<ExtArgs>,
+            result: $Utils.Optional<SettingsCountAggregateOutputType> | number
           }
         }
       }
@@ -5833,6 +5997,1805 @@ export namespace Prisma {
 
 
   /**
+   * Model Passed
+   */
+
+  export type AggregatePassed = {
+    _count: PassedCountAggregateOutputType | null
+    _avg: PassedAvgAggregateOutputType | null
+    _sum: PassedSumAggregateOutputType | null
+    _min: PassedMinAggregateOutputType | null
+    _max: PassedMaxAggregateOutputType | null
+  }
+
+  export type PassedAvgAggregateOutputType = {
+    id: number | null
+    userId: number | null
+  }
+
+  export type PassedSumAggregateOutputType = {
+    id: number | null
+    userId: number | null
+  }
+
+  export type PassedMinAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    date: Date | null
+    icon: string | null
+    title: string | null
+    updatedAt: Date | null
+  }
+
+  export type PassedMaxAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    date: Date | null
+    icon: string | null
+    title: string | null
+    updatedAt: Date | null
+  }
+
+  export type PassedCountAggregateOutputType = {
+    id: number
+    userId: number
+    date: number
+    icon: number
+    title: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type PassedAvgAggregateInputType = {
+    id?: true
+    userId?: true
+  }
+
+  export type PassedSumAggregateInputType = {
+    id?: true
+    userId?: true
+  }
+
+  export type PassedMinAggregateInputType = {
+    id?: true
+    userId?: true
+    date?: true
+    icon?: true
+    title?: true
+    updatedAt?: true
+  }
+
+  export type PassedMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    date?: true
+    icon?: true
+    title?: true
+    updatedAt?: true
+  }
+
+  export type PassedCountAggregateInputType = {
+    id?: true
+    userId?: true
+    date?: true
+    icon?: true
+    title?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type PassedAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Passed to aggregate.
+     */
+    where?: PassedWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Passeds to fetch.
+     */
+    orderBy?: PassedOrderByWithRelationInput | PassedOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PassedWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Passeds from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Passeds.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Passeds
+    **/
+    _count?: true | PassedCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PassedAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PassedSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PassedMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PassedMaxAggregateInputType
+  }
+
+  export type GetPassedAggregateType<T extends PassedAggregateArgs> = {
+        [P in keyof T & keyof AggregatePassed]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePassed[P]>
+      : GetScalarType<T[P], AggregatePassed[P]>
+  }
+
+
+
+
+  export type PassedGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PassedWhereInput
+    orderBy?: PassedOrderByWithAggregationInput | PassedOrderByWithAggregationInput[]
+    by: PassedScalarFieldEnum[] | PassedScalarFieldEnum
+    having?: PassedScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PassedCountAggregateInputType | true
+    _avg?: PassedAvgAggregateInputType
+    _sum?: PassedSumAggregateInputType
+    _min?: PassedMinAggregateInputType
+    _max?: PassedMaxAggregateInputType
+  }
+
+  export type PassedGroupByOutputType = {
+    id: number
+    userId: number
+    date: Date
+    icon: string
+    title: string | null
+    updatedAt: Date
+    _count: PassedCountAggregateOutputType | null
+    _avg: PassedAvgAggregateOutputType | null
+    _sum: PassedSumAggregateOutputType | null
+    _min: PassedMinAggregateOutputType | null
+    _max: PassedMaxAggregateOutputType | null
+  }
+
+  type GetPassedGroupByPayload<T extends PassedGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PassedGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PassedGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PassedGroupByOutputType[P]>
+            : GetScalarType<T[P], PassedGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PassedSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    date?: boolean
+    icon?: boolean
+    title?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["passed"]>
+
+  export type PassedSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    date?: boolean
+    icon?: boolean
+    title?: boolean
+    updatedAt?: boolean
+  }
+
+
+
+  export type $PassedPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Passed"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      userId: number
+      date: Date
+      icon: string
+      title: string | null
+      updatedAt: Date
+    }, ExtArgs["result"]["passed"]>
+    composites: {}
+  }
+
+
+  type PassedGetPayload<S extends boolean | null | undefined | PassedDefaultArgs> = $Result.GetResult<Prisma.$PassedPayload, S>
+
+  type PassedCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<PassedFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: PassedCountAggregateInputType | true
+    }
+
+  export interface PassedDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Passed'], meta: { name: 'Passed' } }
+    /**
+     * Find zero or one Passed that matches the filter.
+     * @param {PassedFindUniqueArgs} args - Arguments to find a Passed
+     * @example
+     * // Get one Passed
+     * const passed = await prisma.passed.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends PassedFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, PassedFindUniqueArgs<ExtArgs>>
+    ): Prisma__PassedClient<$Result.GetResult<Prisma.$PassedPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one Passed that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {PassedFindUniqueOrThrowArgs} args - Arguments to find a Passed
+     * @example
+     * // Get one Passed
+     * const passed = await prisma.passed.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends PassedFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, PassedFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__PassedClient<$Result.GetResult<Prisma.$PassedPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first Passed that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PassedFindFirstArgs} args - Arguments to find a Passed
+     * @example
+     * // Get one Passed
+     * const passed = await prisma.passed.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends PassedFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, PassedFindFirstArgs<ExtArgs>>
+    ): Prisma__PassedClient<$Result.GetResult<Prisma.$PassedPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first Passed that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PassedFindFirstOrThrowArgs} args - Arguments to find a Passed
+     * @example
+     * // Get one Passed
+     * const passed = await prisma.passed.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends PassedFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, PassedFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__PassedClient<$Result.GetResult<Prisma.$PassedPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more Passeds that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PassedFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Passeds
+     * const passeds = await prisma.passed.findMany()
+     * 
+     * // Get first 10 Passeds
+     * const passeds = await prisma.passed.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const passedWithIdOnly = await prisma.passed.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends PassedFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, PassedFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PassedPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a Passed.
+     * @param {PassedCreateArgs} args - Arguments to create a Passed.
+     * @example
+     * // Create one Passed
+     * const Passed = await prisma.passed.create({
+     *   data: {
+     *     // ... data to create a Passed
+     *   }
+     * })
+     * 
+    **/
+    create<T extends PassedCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, PassedCreateArgs<ExtArgs>>
+    ): Prisma__PassedClient<$Result.GetResult<Prisma.$PassedPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many Passeds.
+     *     @param {PassedCreateManyArgs} args - Arguments to create many Passeds.
+     *     @example
+     *     // Create many Passeds
+     *     const passed = await prisma.passed.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends PassedCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, PassedCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Passed.
+     * @param {PassedDeleteArgs} args - Arguments to delete one Passed.
+     * @example
+     * // Delete one Passed
+     * const Passed = await prisma.passed.delete({
+     *   where: {
+     *     // ... filter to delete one Passed
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends PassedDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, PassedDeleteArgs<ExtArgs>>
+    ): Prisma__PassedClient<$Result.GetResult<Prisma.$PassedPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one Passed.
+     * @param {PassedUpdateArgs} args - Arguments to update one Passed.
+     * @example
+     * // Update one Passed
+     * const passed = await prisma.passed.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends PassedUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, PassedUpdateArgs<ExtArgs>>
+    ): Prisma__PassedClient<$Result.GetResult<Prisma.$PassedPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Passeds.
+     * @param {PassedDeleteManyArgs} args - Arguments to filter Passeds to delete.
+     * @example
+     * // Delete a few Passeds
+     * const { count } = await prisma.passed.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends PassedDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, PassedDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Passeds.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PassedUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Passeds
+     * const passed = await prisma.passed.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends PassedUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, PassedUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Passed.
+     * @param {PassedUpsertArgs} args - Arguments to update or create a Passed.
+     * @example
+     * // Update or create a Passed
+     * const passed = await prisma.passed.upsert({
+     *   create: {
+     *     // ... data to create a Passed
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Passed we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends PassedUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, PassedUpsertArgs<ExtArgs>>
+    ): Prisma__PassedClient<$Result.GetResult<Prisma.$PassedPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of Passeds.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PassedCountArgs} args - Arguments to filter Passeds to count.
+     * @example
+     * // Count the number of Passeds
+     * const count = await prisma.passed.count({
+     *   where: {
+     *     // ... the filter for the Passeds we want to count
+     *   }
+     * })
+    **/
+    count<T extends PassedCountArgs>(
+      args?: Subset<T, PassedCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PassedCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Passed.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PassedAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PassedAggregateArgs>(args: Subset<T, PassedAggregateArgs>): Prisma.PrismaPromise<GetPassedAggregateType<T>>
+
+    /**
+     * Group by Passed.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PassedGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PassedGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PassedGroupByArgs['orderBy'] }
+        : { orderBy?: PassedGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PassedGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPassedGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Passed model
+   */
+  readonly fields: PassedFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Passed.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PassedClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the Passed model
+   */ 
+  interface PassedFieldRefs {
+    readonly id: FieldRef<"Passed", 'Int'>
+    readonly userId: FieldRef<"Passed", 'Int'>
+    readonly date: FieldRef<"Passed", 'DateTime'>
+    readonly icon: FieldRef<"Passed", 'String'>
+    readonly title: FieldRef<"Passed", 'String'>
+    readonly updatedAt: FieldRef<"Passed", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Passed findUnique
+   */
+  export type PassedFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Passed
+     */
+    select?: PassedSelect<ExtArgs> | null
+    /**
+     * Filter, which Passed to fetch.
+     */
+    where: PassedWhereUniqueInput
+  }
+
+  /**
+   * Passed findUniqueOrThrow
+   */
+  export type PassedFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Passed
+     */
+    select?: PassedSelect<ExtArgs> | null
+    /**
+     * Filter, which Passed to fetch.
+     */
+    where: PassedWhereUniqueInput
+  }
+
+  /**
+   * Passed findFirst
+   */
+  export type PassedFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Passed
+     */
+    select?: PassedSelect<ExtArgs> | null
+    /**
+     * Filter, which Passed to fetch.
+     */
+    where?: PassedWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Passeds to fetch.
+     */
+    orderBy?: PassedOrderByWithRelationInput | PassedOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Passeds.
+     */
+    cursor?: PassedWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Passeds from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Passeds.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Passeds.
+     */
+    distinct?: PassedScalarFieldEnum | PassedScalarFieldEnum[]
+  }
+
+  /**
+   * Passed findFirstOrThrow
+   */
+  export type PassedFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Passed
+     */
+    select?: PassedSelect<ExtArgs> | null
+    /**
+     * Filter, which Passed to fetch.
+     */
+    where?: PassedWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Passeds to fetch.
+     */
+    orderBy?: PassedOrderByWithRelationInput | PassedOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Passeds.
+     */
+    cursor?: PassedWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Passeds from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Passeds.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Passeds.
+     */
+    distinct?: PassedScalarFieldEnum | PassedScalarFieldEnum[]
+  }
+
+  /**
+   * Passed findMany
+   */
+  export type PassedFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Passed
+     */
+    select?: PassedSelect<ExtArgs> | null
+    /**
+     * Filter, which Passeds to fetch.
+     */
+    where?: PassedWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Passeds to fetch.
+     */
+    orderBy?: PassedOrderByWithRelationInput | PassedOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Passeds.
+     */
+    cursor?: PassedWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Passeds from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Passeds.
+     */
+    skip?: number
+    distinct?: PassedScalarFieldEnum | PassedScalarFieldEnum[]
+  }
+
+  /**
+   * Passed create
+   */
+  export type PassedCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Passed
+     */
+    select?: PassedSelect<ExtArgs> | null
+    /**
+     * The data needed to create a Passed.
+     */
+    data: XOR<PassedCreateInput, PassedUncheckedCreateInput>
+  }
+
+  /**
+   * Passed createMany
+   */
+  export type PassedCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Passeds.
+     */
+    data: PassedCreateManyInput | PassedCreateManyInput[]
+  }
+
+  /**
+   * Passed update
+   */
+  export type PassedUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Passed
+     */
+    select?: PassedSelect<ExtArgs> | null
+    /**
+     * The data needed to update a Passed.
+     */
+    data: XOR<PassedUpdateInput, PassedUncheckedUpdateInput>
+    /**
+     * Choose, which Passed to update.
+     */
+    where: PassedWhereUniqueInput
+  }
+
+  /**
+   * Passed updateMany
+   */
+  export type PassedUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Passeds.
+     */
+    data: XOR<PassedUpdateManyMutationInput, PassedUncheckedUpdateManyInput>
+    /**
+     * Filter which Passeds to update
+     */
+    where?: PassedWhereInput
+  }
+
+  /**
+   * Passed upsert
+   */
+  export type PassedUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Passed
+     */
+    select?: PassedSelect<ExtArgs> | null
+    /**
+     * The filter to search for the Passed to update in case it exists.
+     */
+    where: PassedWhereUniqueInput
+    /**
+     * In case the Passed found by the `where` argument doesn't exist, create a new Passed with this data.
+     */
+    create: XOR<PassedCreateInput, PassedUncheckedCreateInput>
+    /**
+     * In case the Passed was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PassedUpdateInput, PassedUncheckedUpdateInput>
+  }
+
+  /**
+   * Passed delete
+   */
+  export type PassedDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Passed
+     */
+    select?: PassedSelect<ExtArgs> | null
+    /**
+     * Filter which Passed to delete.
+     */
+    where: PassedWhereUniqueInput
+  }
+
+  /**
+   * Passed deleteMany
+   */
+  export type PassedDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Passeds to delete
+     */
+    where?: PassedWhereInput
+  }
+
+  /**
+   * Passed without action
+   */
+  export type PassedDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Passed
+     */
+    select?: PassedSelect<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Settings
+   */
+
+  export type AggregateSettings = {
+    _count: SettingsCountAggregateOutputType | null
+    _avg: SettingsAvgAggregateOutputType | null
+    _sum: SettingsSumAggregateOutputType | null
+    _min: SettingsMinAggregateOutputType | null
+    _max: SettingsMaxAggregateOutputType | null
+  }
+
+  export type SettingsAvgAggregateOutputType = {
+    id: number | null
+    userId: number | null
+  }
+
+  export type SettingsSumAggregateOutputType = {
+    id: number | null
+    userId: number | null
+  }
+
+  export type SettingsMinAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    title: string | null
+    value: string | null
+    updatedAt: Date | null
+  }
+
+  export type SettingsMaxAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    title: string | null
+    value: string | null
+    updatedAt: Date | null
+  }
+
+  export type SettingsCountAggregateOutputType = {
+    id: number
+    userId: number
+    title: number
+    value: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type SettingsAvgAggregateInputType = {
+    id?: true
+    userId?: true
+  }
+
+  export type SettingsSumAggregateInputType = {
+    id?: true
+    userId?: true
+  }
+
+  export type SettingsMinAggregateInputType = {
+    id?: true
+    userId?: true
+    title?: true
+    value?: true
+    updatedAt?: true
+  }
+
+  export type SettingsMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    title?: true
+    value?: true
+    updatedAt?: true
+  }
+
+  export type SettingsCountAggregateInputType = {
+    id?: true
+    userId?: true
+    title?: true
+    value?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type SettingsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Settings to aggregate.
+     */
+    where?: SettingsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Settings to fetch.
+     */
+    orderBy?: SettingsOrderByWithRelationInput | SettingsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: SettingsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Settings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Settings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Settings
+    **/
+    _count?: true | SettingsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: SettingsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: SettingsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SettingsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SettingsMaxAggregateInputType
+  }
+
+  export type GetSettingsAggregateType<T extends SettingsAggregateArgs> = {
+        [P in keyof T & keyof AggregateSettings]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSettings[P]>
+      : GetScalarType<T[P], AggregateSettings[P]>
+  }
+
+
+
+
+  export type SettingsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SettingsWhereInput
+    orderBy?: SettingsOrderByWithAggregationInput | SettingsOrderByWithAggregationInput[]
+    by: SettingsScalarFieldEnum[] | SettingsScalarFieldEnum
+    having?: SettingsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SettingsCountAggregateInputType | true
+    _avg?: SettingsAvgAggregateInputType
+    _sum?: SettingsSumAggregateInputType
+    _min?: SettingsMinAggregateInputType
+    _max?: SettingsMaxAggregateInputType
+  }
+
+  export type SettingsGroupByOutputType = {
+    id: number
+    userId: number
+    title: string
+    value: string
+    updatedAt: Date
+    _count: SettingsCountAggregateOutputType | null
+    _avg: SettingsAvgAggregateOutputType | null
+    _sum: SettingsSumAggregateOutputType | null
+    _min: SettingsMinAggregateOutputType | null
+    _max: SettingsMaxAggregateOutputType | null
+  }
+
+  type GetSettingsGroupByPayload<T extends SettingsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<SettingsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SettingsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SettingsGroupByOutputType[P]>
+            : GetScalarType<T[P], SettingsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type SettingsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    title?: boolean
+    value?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["settings"]>
+
+  export type SettingsSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    title?: boolean
+    value?: boolean
+    updatedAt?: boolean
+  }
+
+
+
+  export type $SettingsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Settings"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      userId: number
+      title: string
+      value: string
+      updatedAt: Date
+    }, ExtArgs["result"]["settings"]>
+    composites: {}
+  }
+
+
+  type SettingsGetPayload<S extends boolean | null | undefined | SettingsDefaultArgs> = $Result.GetResult<Prisma.$SettingsPayload, S>
+
+  type SettingsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<SettingsFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: SettingsCountAggregateInputType | true
+    }
+
+  export interface SettingsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Settings'], meta: { name: 'Settings' } }
+    /**
+     * Find zero or one Settings that matches the filter.
+     * @param {SettingsFindUniqueArgs} args - Arguments to find a Settings
+     * @example
+     * // Get one Settings
+     * const settings = await prisma.settings.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends SettingsFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, SettingsFindUniqueArgs<ExtArgs>>
+    ): Prisma__SettingsClient<$Result.GetResult<Prisma.$SettingsPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one Settings that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {SettingsFindUniqueOrThrowArgs} args - Arguments to find a Settings
+     * @example
+     * // Get one Settings
+     * const settings = await prisma.settings.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends SettingsFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, SettingsFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__SettingsClient<$Result.GetResult<Prisma.$SettingsPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first Settings that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SettingsFindFirstArgs} args - Arguments to find a Settings
+     * @example
+     * // Get one Settings
+     * const settings = await prisma.settings.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends SettingsFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, SettingsFindFirstArgs<ExtArgs>>
+    ): Prisma__SettingsClient<$Result.GetResult<Prisma.$SettingsPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first Settings that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SettingsFindFirstOrThrowArgs} args - Arguments to find a Settings
+     * @example
+     * // Get one Settings
+     * const settings = await prisma.settings.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends SettingsFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, SettingsFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__SettingsClient<$Result.GetResult<Prisma.$SettingsPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more Settings that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SettingsFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Settings
+     * const settings = await prisma.settings.findMany()
+     * 
+     * // Get first 10 Settings
+     * const settings = await prisma.settings.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const settingsWithIdOnly = await prisma.settings.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends SettingsFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, SettingsFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SettingsPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a Settings.
+     * @param {SettingsCreateArgs} args - Arguments to create a Settings.
+     * @example
+     * // Create one Settings
+     * const Settings = await prisma.settings.create({
+     *   data: {
+     *     // ... data to create a Settings
+     *   }
+     * })
+     * 
+    **/
+    create<T extends SettingsCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, SettingsCreateArgs<ExtArgs>>
+    ): Prisma__SettingsClient<$Result.GetResult<Prisma.$SettingsPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many Settings.
+     *     @param {SettingsCreateManyArgs} args - Arguments to create many Settings.
+     *     @example
+     *     // Create many Settings
+     *     const settings = await prisma.settings.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends SettingsCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, SettingsCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Settings.
+     * @param {SettingsDeleteArgs} args - Arguments to delete one Settings.
+     * @example
+     * // Delete one Settings
+     * const Settings = await prisma.settings.delete({
+     *   where: {
+     *     // ... filter to delete one Settings
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends SettingsDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, SettingsDeleteArgs<ExtArgs>>
+    ): Prisma__SettingsClient<$Result.GetResult<Prisma.$SettingsPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one Settings.
+     * @param {SettingsUpdateArgs} args - Arguments to update one Settings.
+     * @example
+     * // Update one Settings
+     * const settings = await prisma.settings.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends SettingsUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, SettingsUpdateArgs<ExtArgs>>
+    ): Prisma__SettingsClient<$Result.GetResult<Prisma.$SettingsPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Settings.
+     * @param {SettingsDeleteManyArgs} args - Arguments to filter Settings to delete.
+     * @example
+     * // Delete a few Settings
+     * const { count } = await prisma.settings.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends SettingsDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, SettingsDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Settings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SettingsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Settings
+     * const settings = await prisma.settings.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends SettingsUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, SettingsUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Settings.
+     * @param {SettingsUpsertArgs} args - Arguments to update or create a Settings.
+     * @example
+     * // Update or create a Settings
+     * const settings = await prisma.settings.upsert({
+     *   create: {
+     *     // ... data to create a Settings
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Settings we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends SettingsUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, SettingsUpsertArgs<ExtArgs>>
+    ): Prisma__SettingsClient<$Result.GetResult<Prisma.$SettingsPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of Settings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SettingsCountArgs} args - Arguments to filter Settings to count.
+     * @example
+     * // Count the number of Settings
+     * const count = await prisma.settings.count({
+     *   where: {
+     *     // ... the filter for the Settings we want to count
+     *   }
+     * })
+    **/
+    count<T extends SettingsCountArgs>(
+      args?: Subset<T, SettingsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SettingsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Settings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SettingsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SettingsAggregateArgs>(args: Subset<T, SettingsAggregateArgs>): Prisma.PrismaPromise<GetSettingsAggregateType<T>>
+
+    /**
+     * Group by Settings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SettingsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends SettingsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: SettingsGroupByArgs['orderBy'] }
+        : { orderBy?: SettingsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, SettingsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSettingsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Settings model
+   */
+  readonly fields: SettingsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Settings.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__SettingsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the Settings model
+   */ 
+  interface SettingsFieldRefs {
+    readonly id: FieldRef<"Settings", 'Int'>
+    readonly userId: FieldRef<"Settings", 'Int'>
+    readonly title: FieldRef<"Settings", 'String'>
+    readonly value: FieldRef<"Settings", 'String'>
+    readonly updatedAt: FieldRef<"Settings", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Settings findUnique
+   */
+  export type SettingsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Settings
+     */
+    select?: SettingsSelect<ExtArgs> | null
+    /**
+     * Filter, which Settings to fetch.
+     */
+    where: SettingsWhereUniqueInput
+  }
+
+  /**
+   * Settings findUniqueOrThrow
+   */
+  export type SettingsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Settings
+     */
+    select?: SettingsSelect<ExtArgs> | null
+    /**
+     * Filter, which Settings to fetch.
+     */
+    where: SettingsWhereUniqueInput
+  }
+
+  /**
+   * Settings findFirst
+   */
+  export type SettingsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Settings
+     */
+    select?: SettingsSelect<ExtArgs> | null
+    /**
+     * Filter, which Settings to fetch.
+     */
+    where?: SettingsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Settings to fetch.
+     */
+    orderBy?: SettingsOrderByWithRelationInput | SettingsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Settings.
+     */
+    cursor?: SettingsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Settings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Settings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Settings.
+     */
+    distinct?: SettingsScalarFieldEnum | SettingsScalarFieldEnum[]
+  }
+
+  /**
+   * Settings findFirstOrThrow
+   */
+  export type SettingsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Settings
+     */
+    select?: SettingsSelect<ExtArgs> | null
+    /**
+     * Filter, which Settings to fetch.
+     */
+    where?: SettingsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Settings to fetch.
+     */
+    orderBy?: SettingsOrderByWithRelationInput | SettingsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Settings.
+     */
+    cursor?: SettingsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Settings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Settings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Settings.
+     */
+    distinct?: SettingsScalarFieldEnum | SettingsScalarFieldEnum[]
+  }
+
+  /**
+   * Settings findMany
+   */
+  export type SettingsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Settings
+     */
+    select?: SettingsSelect<ExtArgs> | null
+    /**
+     * Filter, which Settings to fetch.
+     */
+    where?: SettingsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Settings to fetch.
+     */
+    orderBy?: SettingsOrderByWithRelationInput | SettingsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Settings.
+     */
+    cursor?: SettingsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Settings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Settings.
+     */
+    skip?: number
+    distinct?: SettingsScalarFieldEnum | SettingsScalarFieldEnum[]
+  }
+
+  /**
+   * Settings create
+   */
+  export type SettingsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Settings
+     */
+    select?: SettingsSelect<ExtArgs> | null
+    /**
+     * The data needed to create a Settings.
+     */
+    data: XOR<SettingsCreateInput, SettingsUncheckedCreateInput>
+  }
+
+  /**
+   * Settings createMany
+   */
+  export type SettingsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Settings.
+     */
+    data: SettingsCreateManyInput | SettingsCreateManyInput[]
+  }
+
+  /**
+   * Settings update
+   */
+  export type SettingsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Settings
+     */
+    select?: SettingsSelect<ExtArgs> | null
+    /**
+     * The data needed to update a Settings.
+     */
+    data: XOR<SettingsUpdateInput, SettingsUncheckedUpdateInput>
+    /**
+     * Choose, which Settings to update.
+     */
+    where: SettingsWhereUniqueInput
+  }
+
+  /**
+   * Settings updateMany
+   */
+  export type SettingsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Settings.
+     */
+    data: XOR<SettingsUpdateManyMutationInput, SettingsUncheckedUpdateManyInput>
+    /**
+     * Filter which Settings to update
+     */
+    where?: SettingsWhereInput
+  }
+
+  /**
+   * Settings upsert
+   */
+  export type SettingsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Settings
+     */
+    select?: SettingsSelect<ExtArgs> | null
+    /**
+     * The filter to search for the Settings to update in case it exists.
+     */
+    where: SettingsWhereUniqueInput
+    /**
+     * In case the Settings found by the `where` argument doesn't exist, create a new Settings with this data.
+     */
+    create: XOR<SettingsCreateInput, SettingsUncheckedCreateInput>
+    /**
+     * In case the Settings was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<SettingsUpdateInput, SettingsUncheckedUpdateInput>
+  }
+
+  /**
+   * Settings delete
+   */
+  export type SettingsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Settings
+     */
+    select?: SettingsSelect<ExtArgs> | null
+    /**
+     * Filter which Settings to delete.
+     */
+    where: SettingsWhereUniqueInput
+  }
+
+  /**
+   * Settings deleteMany
+   */
+  export type SettingsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Settings to delete
+     */
+    where?: SettingsWhereInput
+  }
+
+  /**
+   * Settings without action
+   */
+  export type SettingsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Settings
+     */
+    select?: SettingsSelect<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -5911,6 +7874,29 @@ export namespace Prisma {
   };
 
   export type FavoritesScalarFieldEnum = (typeof FavoritesScalarFieldEnum)[keyof typeof FavoritesScalarFieldEnum]
+
+
+  export const PassedScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    date: 'date',
+    icon: 'icon',
+    title: 'title',
+    updatedAt: 'updatedAt'
+  };
+
+  export type PassedScalarFieldEnum = (typeof PassedScalarFieldEnum)[keyof typeof PassedScalarFieldEnum]
+
+
+  export const SettingsScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    title: 'title',
+    value: 'value',
+    updatedAt: 'updatedAt'
+  };
+
+  export type SettingsScalarFieldEnum = (typeof SettingsScalarFieldEnum)[keyof typeof SettingsScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -6310,6 +8296,119 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Favorites"> | Date | string
   }
 
+  export type PassedWhereInput = {
+    AND?: PassedWhereInput | PassedWhereInput[]
+    OR?: PassedWhereInput[]
+    NOT?: PassedWhereInput | PassedWhereInput[]
+    id?: IntFilter<"Passed"> | number
+    userId?: IntFilter<"Passed"> | number
+    date?: DateTimeFilter<"Passed"> | Date | string
+    icon?: StringFilter<"Passed"> | string
+    title?: StringNullableFilter<"Passed"> | string | null
+    updatedAt?: DateTimeFilter<"Passed"> | Date | string
+  }
+
+  export type PassedOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    date?: SortOrder
+    icon?: SortOrder
+    title?: SortOrderInput | SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PassedWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    userId?: number
+    AND?: PassedWhereInput | PassedWhereInput[]
+    OR?: PassedWhereInput[]
+    NOT?: PassedWhereInput | PassedWhereInput[]
+    date?: DateTimeFilter<"Passed"> | Date | string
+    icon?: StringFilter<"Passed"> | string
+    title?: StringNullableFilter<"Passed"> | string | null
+    updatedAt?: DateTimeFilter<"Passed"> | Date | string
+  }, "id" | "userId">
+
+  export type PassedOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    date?: SortOrder
+    icon?: SortOrder
+    title?: SortOrderInput | SortOrder
+    updatedAt?: SortOrder
+    _count?: PassedCountOrderByAggregateInput
+    _avg?: PassedAvgOrderByAggregateInput
+    _max?: PassedMaxOrderByAggregateInput
+    _min?: PassedMinOrderByAggregateInput
+    _sum?: PassedSumOrderByAggregateInput
+  }
+
+  export type PassedScalarWhereWithAggregatesInput = {
+    AND?: PassedScalarWhereWithAggregatesInput | PassedScalarWhereWithAggregatesInput[]
+    OR?: PassedScalarWhereWithAggregatesInput[]
+    NOT?: PassedScalarWhereWithAggregatesInput | PassedScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Passed"> | number
+    userId?: IntWithAggregatesFilter<"Passed"> | number
+    date?: DateTimeWithAggregatesFilter<"Passed"> | Date | string
+    icon?: StringWithAggregatesFilter<"Passed"> | string
+    title?: StringNullableWithAggregatesFilter<"Passed"> | string | null
+    updatedAt?: DateTimeWithAggregatesFilter<"Passed"> | Date | string
+  }
+
+  export type SettingsWhereInput = {
+    AND?: SettingsWhereInput | SettingsWhereInput[]
+    OR?: SettingsWhereInput[]
+    NOT?: SettingsWhereInput | SettingsWhereInput[]
+    id?: IntFilter<"Settings"> | number
+    userId?: IntFilter<"Settings"> | number
+    title?: StringFilter<"Settings"> | string
+    value?: StringFilter<"Settings"> | string
+    updatedAt?: DateTimeFilter<"Settings"> | Date | string
+  }
+
+  export type SettingsOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    title?: SortOrder
+    value?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SettingsWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: SettingsWhereInput | SettingsWhereInput[]
+    OR?: SettingsWhereInput[]
+    NOT?: SettingsWhereInput | SettingsWhereInput[]
+    userId?: IntFilter<"Settings"> | number
+    title?: StringFilter<"Settings"> | string
+    value?: StringFilter<"Settings"> | string
+    updatedAt?: DateTimeFilter<"Settings"> | Date | string
+  }, "id">
+
+  export type SettingsOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    title?: SortOrder
+    value?: SortOrder
+    updatedAt?: SortOrder
+    _count?: SettingsCountOrderByAggregateInput
+    _avg?: SettingsAvgOrderByAggregateInput
+    _max?: SettingsMaxOrderByAggregateInput
+    _min?: SettingsMinOrderByAggregateInput
+    _sum?: SettingsSumOrderByAggregateInput
+  }
+
+  export type SettingsScalarWhereWithAggregatesInput = {
+    AND?: SettingsScalarWhereWithAggregatesInput | SettingsScalarWhereWithAggregatesInput[]
+    OR?: SettingsScalarWhereWithAggregatesInput[]
+    NOT?: SettingsScalarWhereWithAggregatesInput | SettingsScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Settings"> | number
+    userId?: IntWithAggregatesFilter<"Settings"> | number
+    title?: StringWithAggregatesFilter<"Settings"> | string
+    value?: StringWithAggregatesFilter<"Settings"> | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Settings"> | Date | string
+  }
+
   export type AccountCreateInput = {
     compoundId: string
     userId: number
@@ -6680,6 +8779,119 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type PassedCreateInput = {
+    userId: number
+    date?: Date | string
+    icon: string
+    title?: string | null
+    updatedAt?: Date | string
+  }
+
+  export type PassedUncheckedCreateInput = {
+    id?: number
+    userId: number
+    date?: Date | string
+    icon: string
+    title?: string | null
+    updatedAt?: Date | string
+  }
+
+  export type PassedUpdateInput = {
+    userId?: IntFieldUpdateOperationsInput | number
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    icon?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PassedUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    icon?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PassedCreateManyInput = {
+    id?: number
+    userId: number
+    date?: Date | string
+    icon: string
+    title?: string | null
+    updatedAt?: Date | string
+  }
+
+  export type PassedUpdateManyMutationInput = {
+    userId?: IntFieldUpdateOperationsInput | number
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    icon?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PassedUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    icon?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SettingsCreateInput = {
+    userId: number
+    title: string
+    value: string
+    updatedAt?: Date | string
+  }
+
+  export type SettingsUncheckedCreateInput = {
+    id?: number
+    userId: number
+    title: string
+    value: string
+    updatedAt?: Date | string
+  }
+
+  export type SettingsUpdateInput = {
+    userId?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    value?: StringFieldUpdateOperationsInput | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SettingsUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    value?: StringFieldUpdateOperationsInput | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SettingsCreateManyInput = {
+    id?: number
+    userId: number
+    title: string
+    value: string
+    updatedAt?: Date | string
+  }
+
+  export type SettingsUpdateManyMutationInput = {
+    userId?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    value?: StringFieldUpdateOperationsInput | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SettingsUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    value?: StringFieldUpdateOperationsInput | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[]
@@ -7037,6 +9249,77 @@ export namespace Prisma {
     order?: SortOrder
   }
 
+  export type PassedCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    date?: SortOrder
+    icon?: SortOrder
+    title?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PassedAvgOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type PassedMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    date?: SortOrder
+    icon?: SortOrder
+    title?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PassedMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    date?: SortOrder
+    icon?: SortOrder
+    title?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PassedSumOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type SettingsCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    title?: SortOrder
+    value?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SettingsAvgOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type SettingsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    title?: SortOrder
+    value?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SettingsMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    title?: SortOrder
+    value?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SettingsSumOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -7247,6 +9530,14 @@ export namespace Prisma {
      * @deprecated Use FavoritesDefaultArgs instead
      */
     export type FavoritesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = FavoritesDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use PassedDefaultArgs instead
+     */
+    export type PassedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = PassedDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use SettingsDefaultArgs instead
+     */
+    export type SettingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = SettingsDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

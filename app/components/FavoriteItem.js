@@ -7,9 +7,9 @@ const FavoriteItem = ({item}) => {
   return (
     <div
       className="aspect-square bg-slate-800 rounded-3xl hover:shadow-lg hover:shadow-cyan-500/50 px-2 py-4 flex flex-col justify-between overflow-hidden relative group">
-      <div className="text-6xl text-center">{item.icon}</div>
+      <div className="text-6xl text-center mt-2">{item.icon}</div>
       <div className="font-bold text-center">{item.title}</div>
-      <div className="truncate text-left text-sm text-gray-400"
+      <div className="truncate text-sm text-gray-400 text-center"
            dir="ltr">{item.url}
       </div>
       <Link href={item.url}
