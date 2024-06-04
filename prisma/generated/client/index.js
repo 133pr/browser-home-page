@@ -82,6 +82,9 @@ Prisma.NullTypes = {
  * Enums
  */
 exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
+  ReadUncommitted: 'ReadUncommitted',
+  ReadCommitted: 'ReadCommitted',
+  RepeatableRead: 'RepeatableRead',
   Serializable: 'Serializable'
 });
 
@@ -162,6 +165,11 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
+exports.Prisma.QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
+};
+
 exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
@@ -214,17 +222,17 @@ const config = {
   "datasourceNames": [
     "db"
   ],
-  "activeProvider": "sqlite",
+  "activeProvider": "postgresql",
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": null,
-        "value": "file:./dev.db"
+        "value": "postgresql://production_owner:jNrUV15bYfct@ep-cool-grass-a1ehbfky-pooler.ap-southeast-1.aws.neon.tech/production?sslmode=require"
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"./generated/client\"\n}\n\ndatasource db {\n  provider = \"sqlite\"\n  url      = \"file:./dev.db\"\n}\n\nmodel Account {\n  id                 Int       @id @default(autoincrement())\n  compoundId         String    @unique @map(name: \"compound_id\")\n  userId             Int       @map(name: \"user_id\")\n  providerType       String    @map(name: \"provider_type\")\n  providerId         String    @map(name: \"provider_id\")\n  providerAccountId  String    @map(name: \"provider_account_id\")\n  refreshToken       String?   @map(name: \"refresh_token\")\n  accessToken        String?   @map(name: \"access_token\")\n  accessTokenExpires DateTime? @map(name: \"access_token_expires\")\n  createdAt          DateTime  @default(now()) @map(name: \"created_at\")\n  updatedAt          DateTime  @default(now()) @map(name: \"updated_at\")\n\n  @@index([providerAccountId], name: \"providerAccountId\")\n  @@index([providerId], name: \"providerId\")\n  @@index([userId], name: \"userId\")\n  @@map(name: \"accounts\")\n}\n\nmodel Session {\n  id           Int      @id @default(autoincrement())\n  userId       Int      @map(name: \"user_id\")\n  expires      DateTime\n  sessionToken String   @unique @map(name: \"session_token\")\n  accessToken  String   @unique @map(name: \"access_token\")\n  createdAt    DateTime @default(now()) @map(name: \"created_at\")\n  updatedAt    DateTime @default(now()) @map(name: \"updated_at\")\n\n  @@map(name: \"sessions\")\n}\n\nmodel User {\n  id             Int       @id @default(autoincrement())\n  name           String?\n  email          String?   @unique\n  emailVerified  DateTime? @map(name: \"email_verified\")\n  image          String?\n  hashedPassword String?\n  createdAt      DateTime  @default(now()) @map(name: \"created_at\")\n  updatedAt      DateTime  @default(now()) @map(name: \"updated_at\")\n\n  @@map(name: \"users\")\n}\n\nmodel VerificationRequest {\n  id         Int      @id @default(autoincrement())\n  identifier String\n  token      String   @unique\n  expires    DateTime\n  createdAt  DateTime @default(now()) @map(name: \"created_at\")\n  updatedAt  DateTime @default(now()) @map(name: \"updated_at\")\n\n  @@map(name: \"verification_requests\")\n}\n\nmodel Favorites {\n  id        Int      @id @default(autoincrement())\n  userId    Int      @map(name: \"user_id\")\n  icon      String\n  title     String\n  url       String\n  order     Int\n  createdAt DateTime @default(now()) @map(name: \"created_at\")\n  updatedAt DateTime @default(now()) @map(name: \"updated_at\")\n\n  @@map(name: \"favorits\")\n}\n\nmodel Passed {\n  id        Int      @id @default(autoincrement())\n  userId    Int      @unique @map(name: \"user_id\")\n  date      DateTime @default(now())\n  icon      String\n  title     String?\n  updatedAt DateTime @default(now()) @map(name: \"updated_at\")\n\n  @@map(name: \"passed\")\n}\n\nmodel Settings {\n  id        Int      @id @default(autoincrement())\n  userId    Int      @map(name: \"user_id\")\n  title     String\n  value     String\n  updatedAt DateTime @default(now()) @map(name: \"updated_at\")\n\n  @@map(name: \"settings\")\n}\n",
-  "inlineSchemaHash": "d4e066c3f14a48c5a7792dffeaae2e02b3a859bafad7797b866030e209b5e8ba",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"./generated/client\"\n}\n\ndatasource db {\n  provider  = \"postgresql\"\n  url       = \"postgresql://production_owner:jNrUV15bYfct@ep-cool-grass-a1ehbfky-pooler.ap-southeast-1.aws.neon.tech/production?sslmode=require\"\n  directUrl = \"postgresql://production_owner:jNrUV15bYfct@ep-cool-grass-a1ehbfky.ap-southeast-1.aws.neon.tech/production?sslmode=require\"\n}\n\nmodel Account {\n  id                 Int       @id @default(autoincrement())\n  compoundId         String    @unique @map(name: \"compound_id\")\n  userId             Int       @map(name: \"user_id\")\n  providerType       String    @map(name: \"provider_type\")\n  providerId         String    @map(name: \"provider_id\")\n  providerAccountId  String    @map(name: \"provider_account_id\")\n  refreshToken       String?   @map(name: \"refresh_token\")\n  accessToken        String?   @map(name: \"access_token\")\n  accessTokenExpires DateTime? @map(name: \"access_token_expires\")\n  createdAt          DateTime  @default(now()) @map(name: \"created_at\")\n  updatedAt          DateTime  @default(now()) @map(name: \"updated_at\")\n\n  @@index([providerAccountId], name: \"providerAccountId\")\n  @@index([providerId], name: \"providerId\")\n  @@index([userId], name: \"userId\")\n  @@map(name: \"accounts\")\n}\n\nmodel Session {\n  id           Int      @id @default(autoincrement())\n  userId       Int      @map(name: \"user_id\")\n  expires      DateTime\n  sessionToken String   @unique @map(name: \"session_token\")\n  accessToken  String   @unique @map(name: \"access_token\")\n  createdAt    DateTime @default(now()) @map(name: \"created_at\")\n  updatedAt    DateTime @default(now()) @map(name: \"updated_at\")\n\n  @@map(name: \"sessions\")\n}\n\nmodel User {\n  id             Int       @id @default(autoincrement())\n  name           String?\n  email          String?   @unique\n  emailVerified  DateTime? @map(name: \"email_verified\")\n  image          String?\n  hashedPassword String?\n  createdAt      DateTime  @default(now()) @map(name: \"created_at\")\n  updatedAt      DateTime  @default(now()) @map(name: \"updated_at\")\n\n  @@map(name: \"users\")\n}\n\nmodel VerificationRequest {\n  id         Int      @id @default(autoincrement())\n  identifier String\n  token      String   @unique\n  expires    DateTime\n  createdAt  DateTime @default(now()) @map(name: \"created_at\")\n  updatedAt  DateTime @default(now()) @map(name: \"updated_at\")\n\n  @@map(name: \"verification_requests\")\n}\n\nmodel Favorites {\n  id        Int      @id @default(autoincrement())\n  userId    Int      @map(name: \"user_id\")\n  icon      String\n  title     String\n  url       String\n  order     Int\n  createdAt DateTime @default(now()) @map(name: \"created_at\")\n  updatedAt DateTime @default(now()) @map(name: \"updated_at\")\n\n  @@map(name: \"favorits\")\n}\n\nmodel Passed {\n  id        Int      @id @default(autoincrement())\n  userId    Int      @unique @map(name: \"user_id\")\n  date      DateTime @default(now())\n  icon      String\n  title     String?\n  updatedAt DateTime @default(now()) @map(name: \"updated_at\")\n\n  @@map(name: \"passed\")\n}\n\nmodel Settings {\n  id        Int      @id @default(autoincrement())\n  userId    Int      @map(name: \"user_id\")\n  title     String\n  value     String\n  updatedAt DateTime @default(now()) @map(name: \"updated_at\")\n\n  @@map(name: \"settings\")\n}\n",
+  "inlineSchemaHash": "ad355cb21deade633950d8c6d4ad50fe589c0220a292776ccc67f3fbe9badc44",
   "copyEngine": true
 }
 

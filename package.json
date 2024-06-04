@@ -15,6 +15,7 @@
     "bcrypt": "^5.1.1",
     "emoji-picker-react": "^4.9.2",
     "moment": "^2.30.1",
+    "neonctl": "^1.29.5",
     "next": "14.2.3",
     "next-auth": "^4.24.7",
     "next-pwa": "^5.6.0",
