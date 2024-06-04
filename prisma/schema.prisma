@@ -75,3 +75,24 @@ model Favorites {
 
   @@map(name: "favorits")
 }
+
+model Passed {
+  id        Int      @id @default(autoincrement())
+  userId    Int      @unique @map(name: "user_id")
+  date      DateTime @default(now())
+  icon      String
+  title     String?
+  updatedAt DateTime @default(now()) @map(name: "updated_at")
+
+  @@map(name: "passed")
+}
+
+model Settings {
+  id        Int      @id @default(autoincrement())
+  userId    Int      @map(name: "user_id")
+  title     String
+  value     String
+  updatedAt DateTime @default(now()) @map(name: "updated_at")
+
+  @@map(name: "settings")
+}

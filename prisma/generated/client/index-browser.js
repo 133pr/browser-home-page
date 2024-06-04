@@ -17,11 +17,11 @@ exports.$Enums = {}
 
 /**
  * Prisma Client JS version: 5.13.0
- * Query Engine version: b9a39a7ee606c28e3455d0fd60e78c3ba82b1a2b
+ * Query Engine version: e9771e62de70f79a5e1c604a2d7c8e2a0a874b48
  */
 Prisma.prismaVersion = {
   client: "5.13.0",
-  engine: "b9a39a7ee606c28e3455d0fd60e78c3ba82b1a2b"
+  engine: "e9771e62de70f79a5e1c604a2d7c8e2a0a874b48"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -171,6 +171,23 @@ exports.Prisma.FavoritesScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.PassedScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  date: 'date',
+  icon: 'icon',
+  title: 'title',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.SettingsScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  title: 'title',
+  value: 'value',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -187,7 +204,9 @@ exports.Prisma.ModelName = {
   Session: 'Session',
   User: 'User',
   VerificationRequest: 'VerificationRequest',
-  Favorites: 'Favorites'
+  Favorites: 'Favorites',
+  Passed: 'Passed',
+  Settings: 'Settings'
 };
 
 /**

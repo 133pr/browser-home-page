@@ -30,6 +30,24 @@ const withPWA = nextPwa({
     // }
 });
 
-const nextConfig = withPWA({});
+const nextConfig = withPWA({
+    async headers() {
+        return [
+            {
+                source: '/(.*)',
+                headers: [
+                    {
+                        key: 'X-Frame-Options',
+                        value: 'ALLOWALL'
+                    },
+                    {
+                        key: 'Content-Security-Policy',
+                        value: "frame-ancestors 'self' https://your-allowed-domain.com"
+                    }
+                ],
+            },
+        ];
+    },
+});
 
 export default nextConfig;

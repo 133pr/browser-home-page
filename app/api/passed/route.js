@@ -8,14 +8,6 @@ export async function GET(request) {
   const session = await getServerSession(authOptions);
   if (session) {
     const user_id = session.user.id;
-    const userItem = await prisma.user.findUnique({
-      where: {
-        id: parseInt(user_id),
-      },
-      select: {
-        name: true,
-      },
-    });
 
     const passedItem = await prisma.passed
       .findUnique({
@@ -36,23 +28,15 @@ export async function GET(request) {
         };
       });
 
-    const items = {
-      user: userItem,
-      passed: passedItem,
-    };
-    return NextResponse.json({ items, error: "" });
+    return NextResponse.json({ item: passedItem, error: "" });
   }
-  const items = {
-    user: {
-      name: "",
-    },
-    passed: {
-      title: "",
-      icon: "",
-      date: new Date(),
-    },
-  };
-  return NextResponse.json({ items, error: "not login" });
+  const passedItem = {
+    title: "",
+    icon: "",
+    date: new Date(),
+  }
+
+  return NextResponse.json({ item: passedItem, error: "not login" });
 }
 
 export async function POST(request) {
@@ -69,7 +53,7 @@ export async function POST(request) {
       },
     });
 
-    const oldPassed = await prisma.passed.findUnique({
+    const oldPassed = await prisma.passed.findFirst({
       where: {
         userId: parseInt(user_id),
       },
@@ -83,7 +67,7 @@ export async function POST(request) {
         data: {
           title: data?.passed_title || 'new',
           icon: data.passed_icon,
-          date: new Date(data.passed_time),
+          date: data.passed_date,
           updatedAt: new Date()
         }
       })
@@ -93,7 +77,7 @@ export async function POST(request) {
           userId: parseInt(user_id),
           title: data.passed_title,
           icon: data.passed_icon,
-          date: new Date(data.passed_time),
+          date: data.passed_date,
           updatedAt: new Date()
         }
       })

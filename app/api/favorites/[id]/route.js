@@ -7,7 +7,6 @@ import prisma from "@/prisma/client";
 export async function DELETE(request, { params }) {
   const session = await getServerSession(authOptions);
   const id = params.id;
-  console.log(id);
   if (session) {
     const item = await prisma.favorites.delete({
       where: {

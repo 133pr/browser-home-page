@@ -16,44 +16,42 @@ export const authOptions = {
         email: {
           label: "Email",
           type: "email",
-          placeholder: "Email"
+          placeholder: "Email",
         },
         password: {
           label: "Password",
           type: "password",
-          placeholder: "Password"
-        }
+          placeholder: "Password",
+        },
       },
       async authorize(credentials, req) {
         let user = null;
-        if (!credentials?.email || !credentials.password)
-          return null;
+        if (!credentials?.email || !credentials.password) return null;
 
         user = await prisma.user.findUnique({
-          where: { email: credentials.email }
+          where: { email: credentials.email },
         });
 
         if (user) {
           const passwordsMatch = await bcrypt.compare(
             credentials.password,
-            user?.hashedPassword
+            user?.hashedPassword,
           );
 
           return passwordsMatch ? user : null;
-        }
-        else {
+        } else {
           const hashedPassword = await bcrypt.hash(credentials.password, 10);
           user = await prisma.user.create({
             data: {
               name: credentials.email,
               email: credentials.email,
               hashedPassword: hashedPassword,
-            }
+            },
           });
           return user;
         }
-      }
-    })
+      },
+    }),
   ],
   callbacks: {
     session: async ({ session, token }) => {
@@ -62,17 +60,20 @@ export const authOptions = {
       }
       return session;
     },
-    jwt: async ({ user, token }) => {
+    jwt: async ({ user, token, trigger, session }) => {
       if (user) {
         token.uid = user.id;
+      }
+      if (trigger === "update" && session.name) {
+        token.name = session.name;
       }
       return token;
     },
   },
   session: {
-    strategy: "jwt"
+    strategy: "jwt",
   },
-  secret: process.env.JWT_SECRET
+  secret: process.env.JWT_SECRET,
 };
 
 export default NextAuth(authOptions);
