@@ -42,7 +42,7 @@ const nextConfig = withPWA({
                     },
                     {
                         key: 'Content-Security-Policy',
-                        value: "frame-ancestors 'self' https://your-allowed-domain.com"
+                        value: "frame-ancestors 'self' http://localhost:63342"
                     }
                 ],
             },
