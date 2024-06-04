@@ -9,24 +9,23 @@ export async function GET(request) {
   if (session) {
     const user_id = session.user.id;
 
-    const passedItem = await prisma.passed
-      .findUnique({
-        where: {
-          userId: parseInt(user_id),
-        },
-        select: {
-          title: true,
-          icon: true,
-          date: true,
-        },
-      })
-      .catch(() => {
-        return {
+    const passedItem = await prisma.passed.findUnique({
+      where: {
+        userId: parseInt(user_id),
+      },
+      select: {
+        title: true,
+        icon: true,
+        date: true,
+      },
+    });
+    if (!passedItem) {
+      return NextResponse.json({ item: {
           title: "",
           icon: "",
           date: new Date(),
-        };
-      });
+        }, error: "" });
+    }
 
     return NextResponse.json({ item: passedItem, error: "" });
   }
@@ -34,7 +33,7 @@ export async function GET(request) {
     title: "",
     icon: "",
     date: new Date(),
-  }
+  };
 
   return NextResponse.json({ item: passedItem, error: "not login" });
 }
@@ -65,12 +64,12 @@ export async function POST(request) {
           userId: parseInt(user_id),
         },
         data: {
-          title: data?.passed_title || 'new',
+          title: data?.passed_title || "new",
           icon: data.passed_icon,
           date: data.passed_date,
-          updatedAt: new Date()
-        }
-      })
+          updatedAt: new Date(),
+        },
+      });
     } else {
       await prisma.passed.create({
         data: {
@@ -78,9 +77,9 @@ export async function POST(request) {
           title: data.passed_title,
           icon: data.passed_icon,
           date: data.passed_date,
-          updatedAt: new Date()
-        }
-      })
+          updatedAt: new Date(),
+        },
+      });
     }
 
     return NextResponse.json({ item: {}, error: "" });

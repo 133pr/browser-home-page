@@ -4,8 +4,9 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider  = "postgresql"
+  url       = "postgresql://production_owner:jNrUV15bYfct@ep-cool-grass-a1ehbfky-pooler.ap-southeast-1.aws.neon.tech/production?sslmode=require"
+  directUrl = "postgresql://production_owner:jNrUV15bYfct@ep-cool-grass-a1ehbfky.ap-southeast-1.aws.neon.tech/production?sslmode=require"
 }
 
 model Account {
