@@ -7,7 +7,7 @@ const SettingsComponent = ({data}) => {
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
-    <div className="absolute right-6 top-6">
+    <div className="absolute right-6 top-6 z-40">
       <BsGear
         size={26}
         className="cursor-pointer hover:scale-110"

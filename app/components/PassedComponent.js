@@ -14,7 +14,7 @@ const PassedComponent = ({ item }) => {
     minute: 0,
     second: 0,
   });
-  console.log(item);
+
   const startDate = new Date(item.date);
 
   const calcTime = useCallback(() => {

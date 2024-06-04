@@ -35,25 +35,26 @@ const AddFavorite = () => {
       method: "post",
       body: JSON.stringify(item),
     }).then((res) => {
-      console.log(res);
+
     });
     setEdit(false);
     router.refresh();
   };
 
   return (
-    <div className="aspect-square bg-slate-800 rounded-3xl hover:shadow-lg hover:shadow-cyan-500/50 px-2 py-4 flex flex-col justify-between relative group">
+    <div className="aspect-square bg-slate-800 rounded-3xl hover:shadow-lg hover:shadow-cyan-500/50 px-2 py-4 flex flex-col justify-between group">
       {edit && (
         <>
           <div className="text-6xl mx-auto w-[60px] h-[60px]">
             <span onClick={() => setOpen(true)}>{emoji}</span>
-            <div className="absolute -right-full -top-full translate-x-1/2">
+            <div className="z-50 fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
               <EmojiPicker
                 open={open}
                 theme={"dark"}
                 onEmojiClick={handleEmojiSelect}
                 searchDisabled={true}
                 skinTonesDisabled={true}
+                height={500} width={400}
               />
             </div>
           </div>

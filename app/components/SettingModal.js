@@ -84,15 +84,15 @@ const SettingModal = ({ closeModal, data }) => {
 
   return (
     <div className="fixed right-0 top-0 w-full h-full flex items-center justify-center bg-black/40 z-50 drop-shadow-xl">
-      <div className="bg-slate-900 py-10 px-5 rounded-3xl shadow-lg w-full lg:w-2/3 relative group">
+      <div className="bg-slate-900 py-10 px-5 rounded-3xl shadow-lg w-full lg:w-2/3 relative group lg:max-h-[70%] overflow-y-auto overflow-x-hidden">
         <div>
           <h3 className="text-center text-2xl mb-5">تنظیمات</h3>
           <span
-            className="absolute right-5 top-5 hover:scale-110 opacity-0 group-hover:opacity-100"
+            className="absolute right-5 top-5 hover:scale-110 lg:opacity-0 group-hover:lg:opacity-100"
             role="button"
             onClick={closeModal}
           >
-            <BsX size={24} />
+            <BsX size={40} />
           </span>
         </div>
         <form id="setting-form" onSubmit={submit} method="POST">
@@ -116,6 +116,7 @@ const SettingModal = ({ closeModal, data }) => {
                           emoji.emoji;
                         setShowEmoji(-1);
                       }}
+                      width={'100%'}
                       searchDisabled={true}
                       skinTonesDisabled={true}
                     />
