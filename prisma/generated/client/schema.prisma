@@ -3,10 +3,15 @@ generator client {
   output   = "./generated/client"
 }
 
+// datasource db {
+//   provider  = "postgresql"
+//   url       = "postgresql://production_owner:jNrUV15bYfct@ep-cool-grass-a1ehbfky-pooler.ap-southeast-1.aws.neon.tech/production?sslmode=require"
+//   directUrl = "postgresql://production_owner:jNrUV15bYfct@ep-cool-grass-a1ehbfky.ap-southeast-1.aws.neon.tech/production?sslmode=require"
+// }
+
 datasource db {
-  provider  = "postgresql"
-  url       = "postgresql://production_owner:jNrUV15bYfct@ep-cool-grass-a1ehbfky-pooler.ap-southeast-1.aws.neon.tech/production?sslmode=require"
-  directUrl = "postgresql://production_owner:jNrUV15bYfct@ep-cool-grass-a1ehbfky.ap-southeast-1.aws.neon.tech/production?sslmode=require"
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
 }
 
 model Account {

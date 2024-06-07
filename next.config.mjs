@@ -1,53 +1,34 @@
 /** @type {import('next').NextConfig} */
-import nextPwa from "next-pwa";
+const isDevelopment = process.env.NODE_ENV !== 'production';
 
-const withPWA = nextPwa({
-    dest: 'public',
-    // disable: process.env.NODE_ENV === 'development',
-    register: true,
-    scope: '/app',
-    sw: 'service-worker.js',
-    // exclude: [
-    //     ({asset, compilation}) => {
-    //         if (
-    //             asset.name.startsWith("server/") ||
-    //             asset.name.match(/^((app-|^)build-manifest\.json|react-loadable-manifest\.json)$/)
-    //         ) {
-    //             return true;
-    //         }
-    //         if (process.env.NODE_ENV&& !asset.name.startsWith("static/runtime/")) {
-    //             return true;
-    //         }
-    //         return false;
-    //     }
-    // ],
-    // fallbacks: {
-    //     image: '/static/images/fallback.png'
-    //     // document: '/other-offline',  // if you want to fallback to a custom page other than /_offline
-    //     // font: '/static/font/fallback.woff2',
-    //     // audio: ...,
-    //     // video: ...,
-    // }
-});
-
-const nextConfig = withPWA({
+const nextConfig = {
     async headers() {
         return [
             {
                 source: '/(.*)',
                 headers: [
                     {
-                        key: 'X-Frame-Options',
-                        value: 'ALLOWALL'
+                        key: 'Content-Security-Policy',
+                        value: isDevelopment
+                          ? "frame-ancestors 'self' http://localhost:63342 chrome-extension://*;"
+                          : "frame-ancestors 'self' chrome-extension://*;"
                     },
                     {
-                        key: 'Content-Security-Policy',
-                        value: "frame-ancestors 'self' http://localhost:63342"
-                    }
+                        key: 'Strict-Transport-Security',
+                        value: 'max-age=63072000; includeSubDomains; preload',
+                    },
+                    {
+                        key: 'X-Content-Type-Options',
+                        value: 'nosniff',
+                    },
+                    {
+                        key: 'X-Frame-Options',
+                        value: 'DENY',
+                    },
                 ],
             },
         ];
     },
-});
+};
 
 export default nextConfig;

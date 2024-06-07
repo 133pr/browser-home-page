@@ -15,12 +15,25 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  const { items, error } = await fetch(`${process.env.NEXTAUTH_URL}/api/settings`, {
+  const { items, error } = await fetch(`${process.env.API_URL}/api/settings`, {
     headers: {
       Cookie: cookies()
     }
   })
-    .then(async (r) => await r.json());
+    .then(async (r) => await r.json())
+    .catch(r => {
+      return {
+        user: {
+          name: "",
+        },
+        passed: {
+          title: "",
+          icon: "",
+          date: new Date(),
+        },
+      }
+    })
+
 
   return (
     <html lang="fa" dir={"rtl"}>

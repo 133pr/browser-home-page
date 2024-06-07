@@ -3,7 +3,7 @@ import FavoriteItem from "@/app/components/FavoriteItem";
 import { cookies } from "next/headers";
 
 const FavoritesComponent = async () => {
-  const { items, error } = await fetch(`${process.env.NEXTAUTH_URL}/api/favorites`, {
+  const { items, error } = await fetch(`${process.env.API_URL}/api/favorites`, {
     headers: {
       Cookie: cookies()
     }

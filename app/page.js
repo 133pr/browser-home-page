@@ -5,7 +5,7 @@ import PassedComponent from "@/app/components/PassedComponent";
 import { cookies } from "next/headers";
 
 export default async function Home() {
-  const passed = await fetch(`${process.env.NEXTAUTH_URL}/api/passed`, {
+  const passed = await fetch(`${process.env.API_URL}/api/passed`, {
     headers: {
       Cookie: cookies()
     }

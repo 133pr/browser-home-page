@@ -39,3 +39,6 @@ next-env.d.ts
 /public/service-worker.js.map
 /public/workbox-*.js
 /public/workbox-*.js.map
+
+.env
+/.idea
