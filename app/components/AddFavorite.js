@@ -4,6 +4,7 @@ import { useState } from "react";
 import { AiFillCheckCircle, AiFillPlusSquare, AiFillX } from "react-icons/ai";
 import { useRouter } from "next/navigation";
 import { BiSolidXCircle } from "react-icons/bi";
+import EmojiModal from "@/app/components/EmojiModal";
 
 const AddFavorite = () => {
   const [edit, setEdit] = useState(false);
@@ -13,8 +14,7 @@ const AddFavorite = () => {
   const [url, setUrl] = useState("");
   const router = useRouter();
   const handleEmojiSelect = (em) => {
-    setEmoji(em.emoji);
-    setOpen(false);
+    setEmoji(em);
   };
 
   const handleChangeName = (e) => {
@@ -46,31 +46,31 @@ const AddFavorite = () => {
       className="aspect-square bg-slate-800 rounded-3xl hover:shadow-lg hover:shadow-cyan-500/50 px-2 py-4 flex flex-col justify-between group relative">
       {edit && (
         <>
-          <div className="text-6xl mx-auto w-[60px] h-[60px]">
+          <div className="text-4xl lg:text-6xl mx-auto lg:w-[60px] lg:h-[60px]">
             <span onClick={() => setOpen(true)}>{emoji}</span>
           </div>
           <input
-            className="font-bold text-center"
+            className="font-bold text-center h-8"
             onChange={handleChangeName}
             value={title}
             placeholder="عنوان سایت"
           />
           <input
             type="url"
-            className="truncate text-left text-sm px-2"
+            className="truncate text-left text-sm px-2 h-8"
             placeholder="https://"
             onChange={handleChangeUrl}
             value={url}
             dir="ltr"
           />
           <div
-            className="absolute left-4 top-4 cursor-pointer opacity-0 group-hover:opacity-100"
+            className="absolute left-4 top-4 cursor-pointer lg:opacity-0 group-hover:opacity-100"
             onClick={onSubmit}
           >
             <AiFillCheckCircle className="fill-green-600 text-2xl hover:text-3xl" />
           </div>
           <div
-            className="absolute right-4 top-4 cursor-pointer opacity-0 group-hover:opacity-100"
+            className="absolute right-4 top-4 cursor-pointer lg:opacity-0 group-hover:opacity-100"
             onClick={() => setEdit(false)}
           >
             <BiSolidXCircle className="fill-red-600 text-2xl hover:text-3xl" />
@@ -84,16 +84,7 @@ const AddFavorite = () => {
           </div>
         </>
       )}
-      <div className="z-50 fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-        <EmojiPicker
-          open={open}
-          theme={"dark"}
-          onEmojiClick={handleEmojiSelect}
-          searchDisabled={true}
-          skinTonesDisabled={true}
-          height={500} width={400}
-        />
-      </div>
+        <EmojiModal handleEmojiSelect={handleEmojiSelect} open={open} setOpen={setOpen}/>
     </div>
   );
 };

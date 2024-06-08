@@ -28,7 +28,7 @@ export const authOptions = {
         let user = null;
         if (!credentials?.email || !credentials.password) return null;
 
-        user = await prisma.user.findUnique({
+        user = await prisma.user.findFirst({
           where: { email: credentials.email },
         });
 
@@ -41,6 +41,10 @@ export const authOptions = {
           return passwordsMatch ? user : null;
         } else {
           const hashedPassword = await bcrypt.hash(credentials.password, 10);
+          const isExist = await prisma.user.findMany({
+            where: { email: credentials.email },
+          });
+          if (isExist.length > 0) return null;
           user = await prisma.user.create({
             data: {
               name: credentials.email,

@@ -1,9 +1,10 @@
 "use client";
 import { BsX } from "react-icons/bs";
 import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import EmojiPicker from "emoji-picker-react";
 import { useState } from "react";
+import EmojiModal from "@/app/components/EmojiModal";
 
 const SettingModal = ({ closeModal, data }) => {
   const [showEmoji, setShowEmoji] = useState(-1);
@@ -82,6 +83,12 @@ const SettingModal = ({ closeModal, data }) => {
     },
   ];
 
+  const handleCloseEmoji = (status) => {
+    if (!status) {
+      setShowEmoji(-1);
+    }
+  };
+
   return (
     <div className="fixed right-0 top-0 w-full h-full flex items-center justify-center bg-black/40 z-50 drop-shadow-xl">
       <div className="bg-slate-900 py-10 px-5 rounded-3xl shadow-lg w-full lg:w-2/3 relative group lg:max-h-[70%] overflow-y-auto overflow-x-hidden">
@@ -108,28 +115,26 @@ const SettingModal = ({ closeModal, data }) => {
                       name={item.name}
                       type={item.type}
                     />
-                    <EmojiPicker
-                      open={showEmoji === index}
-                      theme={"dark"}
-                      onEmojiClick={(emoji) => {
-                        document.getElementsByName(item.name)[0].value =
-                          emoji.emoji;
-                        setShowEmoji(-1);
+                    <EmojiModal
+                      handleEmojiSelect={(emo) => {
+                        document.getElementsByName(item.name)[0].value = emo;
                       }}
-                      width={'100%'}
-                      searchDisabled={true}
-                      skinTonesDisabled={true}
+                      open={showEmoji === index}
+                      setOpen={handleCloseEmoji}
+                      defaultValue={item.defaultValue}
                     />
                   </div>
                 );
               } else if (item.type === "hr") {
                 return (
                   <div
-                    key={index}
+                    key={item.name}
                     className="col-span-full flex flex-row items-center gap-5"
                   >
                     <hr key={index} className="flex-1" />
-                    <span className="mx-auto min-w-24 text-center text-xl">{item.label}</span>
+                    <span className="mx-auto min-w-24 text-center text-xl">
+                      {item.label}
+                    </span>
                     <hr key={index} className="flex-1" />
                   </div>
                 );
@@ -148,8 +153,17 @@ const SettingModal = ({ closeModal, data }) => {
               }
             })}
           </div>
-          <div className="mt-10 text-left">
-            <button className="px-4 py-2 hover:bg-slate-900 rounded-full shadow-md shadow-cyan-500/50 hover:shadow-inner">
+          <div className="mt-10 flex justify-between">
+            <button
+              type="button"
+              onClick={() => signOut( {
+                callbackUrl: window.location.href
+              })}
+              className="px-4 py-2 hover:bg-slate-900 rounded-full shadow-md shadow-red-500/50 hover:shadow-inner text-red-500">
+              خروج
+            </button>
+            <button
+              className="px-4 py-2 hover:bg-slate-900 rounded-full shadow-md shadow-cyan-500/50 hover:shadow-inner">
               ذخیره
             </button>
           </div>

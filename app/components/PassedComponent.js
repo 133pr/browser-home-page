@@ -30,7 +30,7 @@ const PassedComponent = ({ item }) => {
   }, [calcTime]);
 
   return (
-    <div className="bg-slate-900 py-10 px-5 rounded-3xl shadow-lg min-h-[60%] order-1 lg:order-2 w-full overflow-hidden">
+    <div className="bg-slate-900 py-10 px-3 lg:px-5 rounded-3xl shadow-lg min-h-[60%] order-1 lg:order-2 w-full overflow-hidden">
       <div className="mb-10 text-center">
         <span className="text-4xl text-center hover:animate-ping select-none mx-auto">
           {item.icon}

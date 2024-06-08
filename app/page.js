@@ -1,4 +1,4 @@
-import SearchComponent from "@/app/components/SearchComponent";
+ import SearchComponent from "@/app/components/SearchComponent";
 import LogoComponent from "@/app/components/LogoComponent";
 import FavoritesComponent from "@/app/components/FavoritesComponent";
 import PassedComponent from "@/app/components/PassedComponent";
